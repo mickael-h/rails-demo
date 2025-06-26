@@ -15,6 +15,7 @@ This is a modern Ruby on Rails 8 demo application that fetches and displays cook
 ## Tech Stack & Choices
 
 - **Ruby on Rails 8**: Latest Rails version for modern conventions
+- **PostgreSQL**: Production-ready relational database
 - **Bootstrap 5**: For responsive, accessible, and attractive UI
 - **RSpec**: For robust, readable testing
 - **FactoryBot & Faker**: For test data
@@ -31,26 +32,74 @@ This is a modern Ruby on Rails 8 demo application that fetches and displays cook
 - **No business logic in views/controllers**: All logic is in models/services
 - **Tests match current UI**: All specs are up to date with the latest design
 
-## How to Run
+## Development Setup
 
-1. **Install dependencies**
-   ```sh
-   bundle install
-   ```
-2. **Prepare the database**
-   ```sh
-   bin/rails db:prepare
-   ```
-3. **Start the server**
-   ```sh
-   bin/dev
-   # or
-   rails server
-   ```
-4. **Run tests**
-   ```sh
-   bundle exec rspec
-   ```
+### Prerequisites
+
+- Ruby 3.2+
+- Rails 8+
+- PostgreSQL 14+
+- Node.js & Yarn (for JS/CSS bundling)
+
+### 1. Install dependencies
+
+```sh
+bundle install
+```
+
+### 2. Set up environment variables
+
+For local development, you can use a `.env` file (with [dotenv-rails](https://github.com/bkeepers/dotenv)) or export variables in your shell:
+
+```sh
+export PGUSER=postgres
+export PGPASSWORD=postgres
+export PGHOST=localhost
+export PGPORT=5432
+```
+
+Or create a `.env` file:
+
+```
+PGUSER=postgres
+PGPASSWORD=postgres
+PGHOST=localhost
+PGPORT=5432
+```
+
+### 3. Prepare the database
+
+```sh
+bin/rails db:prepare
+```
+
+### 4. Start the server
+
+```sh
+bin/dev
+# or
+rails server
+```
+
+### 5. Run tests
+
+```sh
+bundle exec rspec
+```
+
+## Deployment (Render)
+
+1. **Push your code to GitHub/GitLab.**
+2. **Create a new Web Service on [Render](https://dashboard.render.com/):**
+   - Connect your repo
+   - Set build command: `bundle install && bundle exec rails db:migrate`
+   - Set start command: `bundle exec rails server -p 10000`
+   - Add environment variables:
+     - `RAILS_ENV=production`
+     - `RAILS_MASTER_KEY` (from `config/master.key`)
+     - `DATABASE_URL` (from Render's PostgreSQL service)
+3. **Add a PostgreSQL database on Render and link it to your service.**
+4. **Deploy!**
 
 ## Notes
 
