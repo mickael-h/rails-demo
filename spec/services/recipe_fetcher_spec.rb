@@ -20,7 +20,7 @@ RSpec.describe RecipeFetcher do
           "strIngredient3" => "garlic",
           "strMeasure3" => "3 cloves",
           "strIngredient4" => "",
-          "strMeasure4" => "",
+          "strMeasure4" => ""
         }
       ]
     }.to_json
@@ -49,4 +49,4 @@ RSpec.describe RecipeFetcher do
     recipes = service.fetch
     expect(recipes).to eq([])
   end
-end 
+end

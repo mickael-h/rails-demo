@@ -18,7 +18,7 @@ RSpec.describe "Recipes", type: :request do
             "strIngredient3" => "garlic",
             "strMeasure3" => "3 cloves",
             "strIngredient4" => "",
-            "strMeasure4" => "",
+            "strMeasure4" => ""
           }
         ]
       }.to_json
