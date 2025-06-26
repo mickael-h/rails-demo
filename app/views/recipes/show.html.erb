@@ -1,0 +1,21 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-lg">
+        <% if @recipe[:image_url].present? %>
+          <img src="<%= @recipe[:image_url] %>" class="card-img-top mx-auto d-block" alt="<%= @recipe[:title] %>" style="max-width: 300px; margin: 2rem auto 1rem auto; display: block; object-fit: cover;">
+        <% end %>
+        <div class="card-body text-center position-relative">
+          <h2 class="card-title mb-3"><%= @recipe[:title] %></h2>
+          <h5>Ingredients</h5>
+          <p class="card-text"><%= @recipe[:ingredients] %></p>
+          <h5>Instructions</h5>
+          <p class="card-text text-start"><%= @recipe[:instructions] %></p>
+          <% if @recipe[:source_url].present? %>
+            <a href="<%= @recipe[:source_url] %>" target="_blank" class="btn btn-outline-secondary mt-3">Source</a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
