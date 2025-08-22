@@ -3,18 +3,27 @@ class RecipesController < ApplicationController
     query = params[:q].presence || "chicken"
     @recipes = RecipeFetcher.new(query).fetch
     @search_query = query
+    
+    respond_to do |format|
+      format.html
+      format.json { render json: { recipes: @recipes, search_query: @search_query } }
+    end
   end
 
   def show
     # Fetch by id for exact match
     recipe = fetch_by_id(params[:id])
     unless recipe
-      render partial: "not_found", status: :not_found and return if request.xhr? || request.headers["X-Requested-With"] == "XMLHttpRequest"
-      redirect_to recipes_path, alert: "Recipe not found." and return
+      respond_to do |format|
+        format.html { redirect_to recipes_path, alert: "Recipe not found." }
+        format.json { render json: { error: "Recipe not found" }, status: :not_found }
+      end
+      return
     end
-    @recipe = recipe
-    if request.xhr? || request.headers["X-Requested-With"] == "XMLHttpRequest"
-      render partial: "modal_content", locals: { recipe: @recipe }
+    
+    respond_to do |format|
+      format.html { @recipe = recipe }
+      format.json { render json: { recipe: recipe } }
     end
   end
 

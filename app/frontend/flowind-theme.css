@@ -1,0 +1,2 @@
+@import "flowind-design-system/theme.css";
+@custom-variant dark (&:where(.dark, .dark *));

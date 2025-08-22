@@ -1,0 +1,21 @@
+{
+  "name": "rails-demo-svelte",
+  "version": "1.0.0",
+  "description": "Rails Demo with Svelte frontend",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^6.1.3",
+    "@tailwindcss/vite": "^4.1.12",
+    "svelte": "^5.0.0",
+    "tailwindcss": "^4.0.0",
+    "vite": "^7.1.2"
+  },
+  "dependencies": {
+    "flowind-design-system": "latest"
+  }
+}
