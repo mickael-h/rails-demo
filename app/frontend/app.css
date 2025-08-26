@@ -1,18 +1,6 @@
 @import 'tailwindcss';
 @import 'flowind-design-system/theme.css';
 
-@plugin 'flowbite/plugin';
-
 @custom-variant dark (&:where(.dark, .dark *));
 
 @source "../../node_modules/flowind-design-system/dist";
-@source "../../node_modules/flowbite";
-@source "../../node_modules/flowbite-svelte/dist";
-@source "../../node_modules/flowbite-svelte-icons/dist";
-
-@layer base {
-  /* disable chrome cancel button */
-  input[type='search']::-webkit-search-cancel-button {
-    display: none;
-  }
-}
